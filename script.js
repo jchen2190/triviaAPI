@@ -16,33 +16,28 @@ for (let i = 0; i < answerChoiceBtns.length; i++) {
 }
 
 function fetchTriviaQuestions() {
-    console.log(this.id);
-
-    questionH3.innerHTML = ""; // clear previous questions
-
+    questionH3.innerHTML = "";
     fetch(`https://opentdb.com/api.php?amount=1&category=${categoryMenu.value}&type=multiple`, { method: "GET" })
     .then(jsonData => jsonData.json())
-    .then(obj => { // Parse the JSON by calling the json() method on the JSON data and returning the result, which is the "regular" JS object
+    .then(obj => {
         questionH3.innerHTML = obj.results[0].question;
-        console.log('obj:', obj); // parsed obj
         correctAnswer = obj.results[0].correct_answer;
 
-        const allChoices = [...obj.results[0].incorrect_answers, correctAnswer + '&nbsp;']; // set all choices into one array, add &nbsp; to recognize correct answer
-        allChoices.sort(() => Math.random() - 0.5); // randomize
-        console.log(allChoices, correctAnswer); // ['Dance of Death', 'Brave New World&nbsp;', 'A Matter of Life and Death', 'Somewhere in Time'] 'Brave New World'
+        const allChoices = [...obj.results[0].incorrect_answers, correctAnswer + '&nbsp;'];
+        allChoices.sort(() => Math.random() - 0.5);
 
         for (let i = 0; i < answerChoiceBtns.length; i++) {
-            answerChoiceBtns[i].innerHTML = `${answerChoiceBtns[i].id}. &nbsp; ${allChoices[i]}`; // A. Dance of Death  B. Brave New World.... etc.
+            answerChoiceBtns[i].innerHTML = `${answerChoiceBtns[i].id}. &nbsp; ${allChoices[i]}`;
             answerChoiceBtns[i].style.backgroundColor = "#eee";
             answerChoiceBtns[i].style.color = "#333";
             answerChoiceBtns[i].style.display = "block"
+            answerChoiceBtns[i].style.userSelect = "none"
         }
     })
 }
 
 function evalAnswerChoice() {
     tries++;
-
     if(this.innerHTML.slice(-6) == '&nbsp;') { // recognize correct answer
         this.style.backgroundColor = "darkgreen";
         score++;

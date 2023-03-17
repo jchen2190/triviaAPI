@@ -1,10 +1,9 @@
 body { 
-    background-color: #555;
-    color: #555;
+    background-color: #292929;
+    color: #292929;
     font-family: sans-serif;
     text-align: center;
 }
-
 .container {
     margin: 50px auto;
     padding: 30px;
@@ -14,13 +13,11 @@ body {
     min-height: 65vh;
     background-color: #ccc;
 }
-
 #score-box {
     color:darkslategrey; 
     font-size:1.25rem; 
     font-weight: bold;
 }
-
 #question-box {
     background-color: tan;
     font-size: 1.5rem;
@@ -33,7 +30,6 @@ body {
     border-top-right-radius: 0px;
     border: 2px solid black;
 }
-
 #get-trivia-btn {
     width: 544px;
     margin: 0 auto;
@@ -47,12 +43,10 @@ body {
     text-transform: uppercase;
     cursor: pointer;
 }
-
 #get-trivia-btn:hover {
     background-color: darkslategray;
     color: white;
 }
-
 select {
     width: 545px;
     padding: 10px 25px;
@@ -66,7 +60,6 @@ select {
     background-color: darkslategray;
     color: #fff;
 }
-
 .answer-choice-btn {
     display: block;
     margin: 20px;
@@ -78,7 +71,6 @@ select {
     text-align-last: left;
     display: none;
 }
-
 .answer-choice-btn:hover {
     background-color: #ddd;
     cursor: pointer;
